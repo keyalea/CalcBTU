@@ -1,16 +1,17 @@
+#!/usr/bin/python
 # Let's see if I can calculate the overall BTUs needed to heat a building.
 
 print("I'll help you calculate the overall BTUs needed to heat the home.\n")
-print("We need a few different values.")
+print('We need a few different values.\n')
 
 #print("Input the R-value of the walls: ")
 #rValue=input()
 
-rValue = float(input("Input the total R-value of the walls: "))
+rValue = float(input('Input the total R-value of the walls: '))
 
 # insert check to make sure not empty value - or break out.
 
-print("Cool.  I have the value as: ", rValue)
+print('Cool.  I have the value as: ', rValue)
 print("\nYou'll need to supply the following values.")
 wallArea = float(input("Value of the wall area: "))
 windowArea = float(input("Window area: "))
@@ -19,13 +20,29 @@ outTemp = float(input("Outside air temperature: "))
 targetTemp = float(input("Target indoor temperature: "))
 dTemp = abs(outTemp - targetTemp)
 q1 = vertArea*dTemp/rValue
-print("The first q is", q1)
+print('\nThe first section has a BTU value of', q1)
 
-print("\n********* q Success! Moving on. ****************\n")
+print("\n********* BTU Success! Moving on. ****************\n")
+# change this to accept user input to list the different uValues and respective areas for the equation = q = uValue*areaWinow*dTemp, then all the q's would be added to calculate q2.
+helper = str(input('How many windows are there in the home? :'))
+print('\nBecause you said there are * ' + helper + ' * windows in the home, you should enter * ' + helper + ' * items for the uValues and area for the windows.')
+uValues = raw_input('Enter the uValues for the different windows, separted by spaces: ')
+areaInd_windows = raw_input('Enter the area values for the different windows, separated by spaces: ')
+#uValues_List = [int(i) for i in uValues_All.split()]
+#areaInd_Wind = [int(k) for k in areaInd_windows.split()]
+valuesUValues = map(int, uValues.split())
+#print(valuesUValues)
+area_windows = map(int, areaInd_windows.split())
+sumU = sum(valuesUValues)
+sumA = sum(area_windows)
+#sumAreaInd_Wind = sum(areaInd_Wind)
+print('The numbers: ' + str(valuesUValues) + ' have a sum of: ' + str(sumU))
+print('The numbers: ' + str(area_windows) + ' have a sum of: ' + str(sumA))
+q2 = sumU*sumA*dTemp
 
-uValWindow = float(input("Give me that uValue of the windows: "))
-q2 = uValWindow*windowArea*dTemp
-print("q2 is", q2)
+#uValWindow = float(input("Give me that uValue of the windows: "))
+#q2 = uValWindow*windowArea*dTemp
+print('\nThe second section has a BTU value of', q2)
 
 print("\n********* q2 Success! Moving on. ****************\n")
 
@@ -48,7 +65,7 @@ solCoolN = float(input("What is the value for north-facing windows: "))
 solCoolS = float(input("What is the value for south-facing windows: "))
 solCoolLoad = float(aWindowsE*solCoolE) + float(aWindowsW*solCoolW) + float(aWindowsS*solCoolS) + float(aWindowsN*solCoolN)
 q3 = shadeCoEf*solCoolLoad
-print("q3 is", q3)
+print('\nThe third section has a BTU value of', q3)
 
 print("\n********* q3 Success! Moving on. ****************\n")
 
@@ -65,31 +82,31 @@ print("\nHere's the temperature of the attic: ", atticTotal)
 condInsideArea = float(input("\nWhat is the area of the indoor, conditioned space? "))
 nextTemp = outTemp - atticTotal
 q4 = abs(uCeiling*condInsideArea*nextTemp)
-print("q4 is", q4)
+print('\nThe fourth section has a BTU value of', q4)
 
 print("\n********* q4 Success! Moving on. ****************\n")
 
 # May need to change
 cFM = float(input("What is the CFM reading at 50 pascals?: "))
-q5 = 1.074*cFM*dTemp
-print("q5 is", q5)
+nFactor = float(input("What is the N Factor? Do a search to find your specfic N Factor."))
+cFMNatural = cFM/nFactor
+q5 = 1.074*cFMNatural*dTemp
+print('\nThe fifth section has a BTU value of', q5)
 
 print("\n********* q5 Success! Moving on. ****************\n")
 
 wattage = float(input("What is the wattage from the house?"))
 q6 = 3.42*wattage*condInsideArea
-print("q6 is", q6)
+print('\nThe sixth section has a BTU value of', q6)
 
 print("\n********* q6 Success! Moving on. ****************\n")
 
 numPeeps = int(input("How many people live in the home? "))
 q7 = numPeeps*200
-print("q7 is", q7)
+print('\nThe first section has a BTU value of', q7)
 
 print("\n********* q7 Success! Moving on. ****************\n")
 
 grandTotalBTU = q1+q2+q3+q4+q5+q6+q7
 print("The total BTUs needed to heat this particular structure is:")
 print("You ready?", grandTotalBTU, "BTUs per hour.")
-
-
