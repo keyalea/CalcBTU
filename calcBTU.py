@@ -1,12 +1,14 @@
 #!/usr/bin/python
-# Let's see if I can calculate the overall BTUs needed to heat a building.
+# This calculates the overall BTUs needed to heat a building.
+# *** TODO - Document what the values are, for ex, where does 1.074 in q5 come frome? ***
 import time
-print("This is a little program to calculate the overall BTUs needed to heat a structure.\n")
-print('You will need to give me a few different values.\n')
+print("\nHi! This is a little program to calculate the overall BTUs needed to heat a structure.\n")
 
+print('You will need to enter a few different values.\n')
+time.sleep(2)
 rValue = float(input('Input the total R-value of the walls: '))
 
-wallArea = float(input("\nValue of the wall area: "))
+wallArea = float(input("Value of the wall area: "))
 windowArea = float(input("Window area: "))
 vertArea = wallArea - windowArea
 outTemp = float(input("Outside air temperature: "))
@@ -18,21 +20,22 @@ print('\nThe first section has a BTU value of ' + str(q1))
 print("\n********* BTU Success! Moving on. ****************\n")
 
 # This was changed to take multiple u and area values, instead of just one
-# There needs to be a u1, u2, u3, u4, etc 
+# There needs to be a u1, u2, u3, u4, etc
 # Then take the values and add them (the sum of the u1-5, then that's the value of q2)
 # OLD - first change this to accept user input to list the different uValues and respective areas for the equation = q = uValue*areaWinow*dTemp, then all the q's would be added to calculate q2.
 helper = str(input('How many windows are in the home?: '))
 print('\nBecause you said there are * ' + helper + ' * windows in the home, you should enter * ' + helper + ' * items \nfor the uValues and area for the windows.')
-
-print('\nFor example, if there is a double-pane window with a reflective coating,\nyou will need to find the uValue and area, for that window as well as for each type of window.')
+time.sleep(3)
+print('\nFor example, if there is a double-pane window with a reflective coating,\nyou will need to find the uValue and area, for that window, as well as for each type of window.')
+time.sleep(5)
 # The following was done, then found out that the equation was incorrect, but keeping it just in case
 #uValues_List = [int(i) for i in uValues_All.split()]
 #areaInd_Wind = [int(k) for k in areaInd_windows.split()]
 print('\nYou will need to do some searching for the following values depending \non the type of windows you have.')
 #input('Press "enter" to continue')
 time.sleep(3)
-uValues = raw_input('\n*** When ready, enter the uValues for ' + helper + ' different windows, separated by spaces: ')
-areaInd_windows = raw_input('Enter the area values for ' + helper + ' different windows, separated by spaces: ')
+uValues = raw_input('\n*** When ready, enter the uValues for ' + helper + ' different windows, separated by a space: ')
+areaInd_windows = raw_input('Enter the area values for ' + helper + ' different windows, separated by a space: ')
 
 valuesUValues = map(int, uValues.split())
 print('Here are the values you entered for uValue:' + str(valuesUValues))
@@ -45,7 +48,7 @@ print('The first values have been multiplied by the respective second values')
 print(mult)
 for (i, v) in enumerate(mult):
     mult[i] = v*dTemp
-print('Here, the previously multiplied values are multiplied by deltaTemp')    
+print('Here, the previously multiplied values are multiplied by deltaTemp')  
 print(mult)
 q2 = sum(mult)
 #sumU = sum(valuesUValues)
@@ -78,7 +81,7 @@ solCoolN = float(input("Shading coefficient for north-facing windows: "))
 solCoolS = float(input("Finally, how about the south-facing windows: "))
 solCoolLoad = float(aWindowsE*solCoolE) + float(aWindowsW*solCoolW) + float(aWindowsS*solCoolS) + float(aWindowsN*solCoolN)
 q3 = shadeCoEf*solCoolLoad
-print('\nThe third section has a BTU value of' + str(q3))
+print('\nThe third section has a BTU value of ' + str(q3))
 
 print("\n********* q3 Success! Moving on. ****************\n")
 
@@ -101,8 +104,8 @@ print("\n********* q4 Success! Moving on. ****************\n")
 
 # May need to change
 cFM = float(input("What is the CFM reading at 50 pascals?: "))
-nFactor = float(input("\nWhat is the N Factor? \nDo a search to find your specfic N Factor: "))
-print('It would be nice to explain to the user what "n" factor is.')
+nFactor = float(input("\nWhat is the N Factor? \nDo a search to find your specfic N Factor and enter it here: "))
+print('(It would be nice to explain to the user what "n" factor is.)')
 cFMNatural = cFM/nFactor
 q5 = 1.074*cFMNatural*dTemp
 print('\nThe fifth section has a BTU value of ' + str(q5))
@@ -122,5 +125,7 @@ print('\nThe first section has a BTU value of ' + str(q7))
 print("\n********* q7 Success! We're done!  Yesssss! ****************\n")
 
 grandTotalBTU = q1+q2+q3+q4+q5+q6+q7
-print("The total BTUs needed to heat this particular structure is:")
-print("You ready?! " + str(grandTotalBTU) + " BTUs per hour.\n")
+print("The total BTUs needed to heat this particular structure is...")
+print("You ready?!\n")
+time.sleep(1)
+print("It's " + str(grandTotalBTU) + " BTUs per hour.\n")
