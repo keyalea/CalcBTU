@@ -4,14 +4,7 @@ import time
 print("This is a little program to calculate the overall BTUs needed to heat a structure.\n")
 print('You will need to give me a few different values.\n')
 
-#print("Input the R-value of the walls: ")
-#rValue=input()
-
 rValue = float(input('Input the total R-value of the walls: '))
-
-# insert check to make sure not empty value - or break out.
-
-print('Cool.  I have the value as: ' + str(rValue))
 
 wallArea = float(input("\nValue of the wall area: "))
 windowArea = float(input("Window area: "))
@@ -23,16 +16,16 @@ q1 = vertArea*dTemp/rValue
 print('\nThe first section has a BTU value of ' + str(q1))
 
 print("\n********* BTU Success! Moving on. ****************\n")
-# there needs to be a u1, u2, u3, u4, etc - get the values from the user until there aren't any more
-# then take the values and add them (the sum of the u1-5, then that's the value of q2)
-# "We're looking at your windows now.  Because different windows have different u and R values, we need
-#area.   "
-# OLD - first change change this to accept user input to list the different uValues and respective areas for the equation = q = uValue*areaWinow*dTemp, then all the q's would be added to calculate q2.
+
+# This was changed to take multiple u and area values, instead of just one
+# There needs to be a u1, u2, u3, u4, etc 
+# Then take the values and add them (the sum of the u1-5, then that's the value of q2)
+# OLD - first change this to accept user input to list the different uValues and respective areas for the equation = q = uValue*areaWinow*dTemp, then all the q's would be added to calculate q2.
 helper = str(input('How many windows are in the home?: '))
 print('\nBecause you said there are * ' + helper + ' * windows in the home, you should enter * ' + helper + ' * items \nfor the uValues and area for the windows.')
 
 print('\nFor example, if there is a double-pane window with a reflective coating,\nyou will need to find the uValue and area, for that window as well as for each type of window.')
-# The following was done, then found out that the equation was incorrect, but keepint just in case
+# The following was done, then found out that the equation was incorrect, but keeping it just in case
 #uValues_List = [int(i) for i in uValues_All.split()]
 #areaInd_Wind = [int(k) for k in areaInd_windows.split()]
 print('\nYou will need to do some searching for the following values depending \non the type of windows you have.')
@@ -45,8 +38,8 @@ valuesUValues = map(int, uValues.split())
 print('Here are the values you entered for uValue:' + str(valuesUValues))
 area_windows = map(int, areaInd_windows.split())
 print('Here are the values you entered for area:' + str(area_windows))
-# this multiplies the first value in the first list with the first value in the second list
-# then creates a new list that will be used to multiply each value with the difference in temp, dTemp
+# This multiplies the first value in the first list with the first value in the second list
+# Then creates a new list that will be used to multiply each value with the difference in temp, dTemp
 mult = [a*b for a, b in zip(valuesUValues, area_windows)]
 print('The first values have been multiplied by the respective second values')
 print(mult)
@@ -63,14 +56,13 @@ q2 = sum(mult)
 #q2 = (sumU*dTemp)+(sumA*dTemp)
 #uValWindow = float(input("Give me that uValue of the windows: "))
 #q2 = uValWindow*windowArea*dTemp
-#Hopefully they don't change the equation again.
 print('\nThe second section has a BTU value of ' + str(q2))
 print("\n********* q2 Success! Moving on. ****************\n")
 
 # get total area of each window for each side of the house
-shadeCoEf = float(input("What is the shading coefficient? (Hint: This number ranges from 0 to 1.) \nEnter a 1 for no sun: "))
+shadeCoEf = float(input("What is the shading coefficient? (Hint: This number ranges from 0 to 1.) \nEnter 1 for no sun: "))
 print("\nFor the following calcs, you need to go to \nwww.portal.hud.gov/hubportal/documents/huddoc?id=doc_10603.pdf")
-print("Find table 3.25 on page 91\n")
+print("Find table 3.25 on page 91 to get the values for the next section.\n")
 # windowsEW = int(input("How many windows are facing the east and west? "))
 # windowsS = int(input("How many windows are facing the south? "))
 #windowsN = int(input("How many windows are facing the north? "))
