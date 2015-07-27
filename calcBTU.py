@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # This calculates the overall BTUs needed to heat a building.
 # *** TODO - Document what the values are, for ex, where does 1.074 in q5 come frome? ***
 import time
@@ -34,13 +34,13 @@ time.sleep(5)
 print('\nYou will need to do some searching for the following values depending \non the type of windows you have.')
 #input('Press "enter" to continue')
 time.sleep(3)
-uValues = raw_input('\n*** When ready, enter the uValues for ' + helper + ' different windows, separated by a space: ')
-areaInd_windows = raw_input('Enter the area values for ' + helper + ' different windows, separated by a space: ')
+uValues = input('\n*** When ready, enter the uValues for ' + str(helper) + ' different windows, separated by a space: ')
+areaInd_windows = input('Enter the area values for ' + str(helper) + ' different windows, separated by a space: ')
 
 valuesUValues = map(int, uValues.split())
-print('Here are the values you entered for uValue:' + str(valuesUValues))
+#print('Here are the values you entered for uValue:' + str(valuesUValues))
 area_windows = map(int, areaInd_windows.split())
-print('Here are the values you entered for area:' + str(area_windows))
+#print('Here are the values you entered for area:' + str(area_windows))
 # This multiplies the first value in the first list with the first value in the second list
 # Then creates a new list that will be used to multiply each value with the difference in temp, dTemp
 mult = [a*b for a, b in zip(valuesUValues, area_windows)]
