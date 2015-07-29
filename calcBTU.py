@@ -5,8 +5,7 @@
 import time
 
 print("\nHi! This is a little program to calculate the overall BTUs needed to heat a structure.\n")
-
-print('You will need to enter a few different values.\n')
+print('You will need to enter a few different values. In this first section,\nwe will calculate the BTU value for heat conducted through the wall.')`
 time.sleep(2)
 rValue = float(input('Input the total R-value of the walls: '))
 
@@ -27,6 +26,7 @@ print("\n********* BTU Success! Moving on. ****************\n")
 # In order to do this I'm getting two lists from the user, then multiplying respective values
 # I first tried key: values in a dictionary, but similar values would not be repeated.  Instead, text
 #  to guide the user is added.
+print('\nThis next section will calculate heat conducted through the windows of the structure.')
 helper = str(input('How many windows are in the home?: '))
 print('\nBecause you said there are * ' + helper + ' * windows in the home, you should enter * ' + helper + ' * items \nfor the uValues and area for the windows.')
 time.sleep(3)
@@ -54,6 +54,7 @@ print('\nThe second section has a BTU value of ' + str("%.2f" % q2))
 print("\n********* q2 Success! Moving on. ****************\n")
 
 # This calculates the BTUs coming through windows
+print('The next section calculates the solar radiant heat gain from the windows.')
 print('For the following values, to get the shading coefficient, you can go to:\nhttp://www.ced.berkeley.edu/~crisc/oldstuff_Aarch140_11/Readings/Files/appendix.pdf')
 shadeCoEf = float(input("What is the shading coefficient? (Hint: This number ranges from 0 to 1.) \nEnter 1 if shading is a factor: "))
 print("\nFor the following calcs, you need to go to \nwww.portal.hud.gov/hubportal/documents/huddoc?id=doc_10603.pdf")
@@ -73,6 +74,7 @@ print('\nThe third section has a BTU value of ' + str("%.2f" % q3))
 
 print("\n********* q3 Success! Moving on. ****************\n")
 
+print('\nThis next section calculates the heat gain from the attic space.')
 uValue = float(input("What is the uValue of the roof? "))
 aRoof = float(input("What is the area of the roof? "))
 uCeiling = float(input("What is the uValue of the ceiling? "))
@@ -90,7 +92,7 @@ print('\nThe fourth section has a BTU value of ' + str("%.2f" % q4))
 
 print("\n********* q4 Success! Moving on. ****************\n")
 
-# May need to change
+print('\nThis section calculates the sensible (dry) heat gain in the home.') 
 cFM = float(input("What is the CFM reading at 50 pascals?: "))
 nFactor = float(input("\nWhat is the N Factor? \nDo a search to find your specfic N Factor and enter it here: "))
 cFMNatural = cFM/nFactor
@@ -99,12 +101,14 @@ print('\nThe fifth section has a BTU value of ' + str("%.2f" % q5))
 
 print("\n********* q5 Success! Moving on. ****************\n")
 
+print('This next section calculates the heat gain from electrical appliances and lights.')
 wattage = float(input("What is the wattage from the house? "))
 q6 = 3.42*wattage*condInsideArea
 print('\nThe sixth section has a BTU value of ' + str("%.2f" % q6))
 
 print("\n********* q6 Success! Almost there! ****************\n")
 
+print('This next section calculates the heat gain from people in the home.')
 numPeeps = int(input("How many people live in the home? "))
 q7 = numPeeps*200
 print('\nThe seventh section has a BTU value of ' + str("%.2f" % q7))
