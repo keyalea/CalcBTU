@@ -21,7 +21,7 @@ print('\nThe first section has a BTU value of ' + str("%.2f" % q1))
 
 print("\n********* BTU Success! Moving on. ****************-Testing with SourceTree !!!!!!!!!! \n")
 
-# This was changed to take multiple u and area values
+# This was changed to take multiple u and area values - What?!?  Not from the command line?
 # Take the product of the u and area values and add them. The sum is the value of q2
 # In order to do this I'm getting two lists from the user, then multiplying respective values
 # I first tried key: values in a dictionary, but similar values would not be repeated.  Instead, text
