@@ -19,9 +19,9 @@ q1 = vertArea*dTemp/rValue
 #round(q1, 2)
 print('\nThe first section has a BTU value of ' + str("%.2f" % q1))
 
-print("\n********* BTU Success! Moving on. ****************\n")
+print("\n********* BTU Success! Moving on. ****************-Testing with SourceTree !!!!!!!!!! \n")
 
-# This was changed to take multiple u and area values 
+# This was changed to take multiple u and area values
 # Take the product of the u and area values and add them. The sum is the value of q2
 # In order to do this I'm getting two lists from the user, then multiplying respective values
 # I first tried key: values in a dictionary, but similar values would not be repeated.  Instead, text
@@ -94,7 +94,7 @@ print('\nThe fourth section has a BTU value of ' + str("%.2f" % q4))
 
 print("\n********* q4 Success! Moving on. ****************\n")
 
-print('\nThis section calculates the sensible (dry) heat gain in the home.\n') 
+print('\nThis section calculates the sensible (dry) heat gain in the home.\n')
 cFM = float(input("What is the CFM reading at 50 pascals?: "))
 nFactor = float(input("\nWhat is the N Factor? \nDo a search to find your specfic N Factor and enter it here: "))
 cFMNatural = cFM/nFactor
